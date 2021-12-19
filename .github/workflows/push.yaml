@@ -13,13 +13,13 @@ jobs:
   commit-check:
     name: Commit check
     runs-on: ubuntu-latest
+    container: ./.github/actions/alpine-raku
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Run static analysis tool
-        uses: ./.github/actions/alpine-raku
-        with:
-          script: |
+        # uses: ./.github/actions/alpine-raku
+        run: |
             vic2-companion --version
