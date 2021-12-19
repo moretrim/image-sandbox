@@ -31,3 +31,5 @@ jobs:
 
             # run static analysis
             vic2-companion --color=always --heartbeat --whitelist --remarks=opinion "${scaffolding[@]}" "${commit_files[@]}"
+            
+            date
