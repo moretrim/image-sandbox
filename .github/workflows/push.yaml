@@ -17,11 +17,29 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          repository: moretrim/ccHFM
+          fetch-depth: 2
 
       - name: Run static analysis tool
         uses: ./.github/actions/alpine-raku
         with:
           script: |
-            date
-            echo "$SHELL"
-            vic2-companion --help
+            # fail on first error
+            set -Eeuo pipefail
+
+            # compute difference
+            readarray -d "" commit_files < <(git diff-tree -z --no-commit-id --name-only --diff-filter=AM -r --root HEAD -- ccHFM/)
+            if (( "${#commit_files[@]}" == 0 )) ; then
+              echo "No mod files to test."
+              exit
+            fi
+
+            echo   "## Commit: fresh mod files ##"
+            printf "    %q\n" "${commit_files[@]}"
+
+            # the static analysis tool uses these for finer analysis
+            scaffolding=(ccHFM/common/cb_types.txt)
+            # run static analysis
+
+            vic2-companion --color=always --heartbeat --whitelist --remarks=opinion "${scaffolding[@]}" "${commit_files[@]}"
