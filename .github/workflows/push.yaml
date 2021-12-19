@@ -14,7 +14,7 @@ jobs:
     name: Commit check
     runs-on: ubuntu-latest
     container:
-      - image: ./.github/actions/alpine-raku
+      image: ./.github/actions/alpine-raku
 
     steps:
       - name: Checkout repo
