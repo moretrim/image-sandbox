@@ -22,4 +22,6 @@ jobs:
         uses: ./.github/actions/alpine-raku
         with:
           script: |
+            date
+            echo "$SHELL"
             vic2-companion --help
