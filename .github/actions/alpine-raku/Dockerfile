@@ -9,7 +9,7 @@ VOLUME $DIR
 WORKDIR $DIR
 
 # Extra dependencies
-RUN ["apk", "add", "--no-cache", \
+RUN ["apk", "add", "--no-cache" \
     , "bash" \
     , "curl" \
     ]
