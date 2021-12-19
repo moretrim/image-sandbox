@@ -22,3 +22,5 @@ RUN curl --output pds-companion.zip -L 'https://github.com/moretrim/pds-companio
     && zef install --/test Terminal::ANSIColor                                                                      \
     && cd pds-companion-*                                                                                           \
     && zef install --/test .
+
+ENTRYPOINT ["bash", "-c"]
