@@ -23,7 +23,10 @@ jobs:
         with:
           script: |
             # fail on first error
-            set -Eeuo pipefail
+            #set -Eeuo pipefail
+
+            file /home/raku/.raku/bin
+            command -v vic2-companion
 
             # run static analysis
             vic2-companion --color=always --heartbeat --whitelist --remarks=opinion "${scaffolding[@]}" "${commit_files[@]}"
