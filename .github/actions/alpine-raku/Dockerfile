@@ -12,6 +12,8 @@ WORKDIR $DIR
 RUN ["apk", "add", "--no-cache" \
     , "bash" \
     , "curl" \
+    # diagnostics
+    , "coreutils", "file" \
     ]
 
 # Change to non-root user
