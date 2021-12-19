@@ -12,5 +12,4 @@ runs:
   entrypoint: sh
   user: raku
   args:
-    - -c
     - ${{ inputs.script }}
