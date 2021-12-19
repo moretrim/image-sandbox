@@ -25,7 +25,8 @@ jobs:
             # fail on first error
             #set -Eeuo pipefail
 
-            file /home/raku/.raku/bin
+            ls /home/raku/.raku/bin
+            file /home/raku/.raku/bin/vic2-companion
             command -v vic2-companion
 
             # run static analysis
