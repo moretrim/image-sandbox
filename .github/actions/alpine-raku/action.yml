@@ -3,13 +3,13 @@ description: Extend jjmerelo/alpine-raku with more packages
 
 inputs:
   script:
-    description: Bash script to run
+    description: Script to run
     required: true
 
 runs:
   using: docker
   image: ./Dockerfile
-  entrypoint: bash
+  entrypoint: sh
   args:
     - -c
     - ${{ inputs.script }}
