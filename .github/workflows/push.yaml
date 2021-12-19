@@ -1,0 +1,25 @@
+name: CI (push)
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - .github/**
+      - ./**
+  workflow_dispatch:
+  repository_dispatch:
+
+jobs:
+  commit-check:
+    name: Commit check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Run static analysis tool
+        uses: ./.github/actions/alpine-raku
+        with:
+          script: |
+            curl https://example.com
