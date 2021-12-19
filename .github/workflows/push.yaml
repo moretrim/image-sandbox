@@ -22,4 +22,6 @@ jobs:
         uses: ./.github/actions/alpine-raku
         with:
           script: |
-            curl https://example.com
+            curl -v
+            zef -v
+            raku -v
